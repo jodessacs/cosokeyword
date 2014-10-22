@@ -1,8 +1,9 @@
-var assert = require('chai').assert;
+var assert  = require('chai').assert;
 var request = require('request');
-var chai = require('chai');
-var app = require('../app/server');
-var config = require('config');
+var config  = require('config');
+var app     = require('../app/server');
+var logger  = require('../app/common/logger');
+
 
 before(function (done) {
   this.server = app.listen(config.get('port'), done);
