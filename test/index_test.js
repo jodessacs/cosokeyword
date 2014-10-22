@@ -12,7 +12,7 @@ before(function (done) {
 describe('An HTTP server', function() {
   it('should make a request', function(done){
     var options = {
-      uri: 'http://localhost:' + config.get('port') + '/',
+      uri: 'http://localhost:' + config.get('port') + '/glossary/',
       body: 'Testing',
       json: true
     };
