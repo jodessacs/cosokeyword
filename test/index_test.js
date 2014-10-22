@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var request = require('request');
 var chai = require('chai');
-var app = require('../server');
+var app = require('../app/server');
 var config = require('config');
 
 before(function (done) {

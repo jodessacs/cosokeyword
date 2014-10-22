@@ -2,7 +2,8 @@ var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 
 var paths = {
-  tests: 'test/**/*_test.js'
+  tests: 'test/**/*_test.js',
+  scripts: 'app/**/*.js'
 };
 
 gulp.task('test', function () {
