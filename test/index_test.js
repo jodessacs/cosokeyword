@@ -12,11 +12,16 @@ before(function (done) {
 describe('An HTTP server', function() {
   it('should make a request', function(done){
     var options = {
-      uri: 'http://localhost:' + config.get('port') + '/glossary/',
-      body: 'Testing',
+      uri: 'http://localhost:' + config.get('port') + '/',
+      body: {
+        phrase: 'the cat climbed the tree then jump on the roof',
+        method: 'glossary',
+        output: 'say'
+      },
       json: true
     };
 
+    logger.debug(JSON.stringify(options));
     request.post(options, function(err, resp, body) {
       if(err) {
         throw err;
@@ -24,6 +29,7 @@ describe('An HTTP server', function() {
 
       assert.equal(resp.statusCode, 200);
       assert.isObject(resp.body, 'The response is an object');
+      logger.debug('Result: ' + JSON.stringify(resp.body));
       done();
     });
   });
