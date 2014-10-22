@@ -16,7 +16,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test"
+    "test": "gulp test"
   },
   "homepage": "https://github.com/jodessacs/cosokeyword",
   "dependencies": {
@@ -28,6 +28,7 @@
   "devDependencies": {
     "chai": "^1.9.2",
     "gulp": "^3.8.9",
+    "gulp-mocha": "^1.1.1",
     "request": "^2.45.0"
   }
 }
