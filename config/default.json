@@ -9,5 +9,5 @@
     "maxFileSize": 10485760, // 10 MB
     "maxFiles": 20
   },
-  "speechEnabled": true
+  "speechEnabled": false
 }
