@@ -17,8 +17,7 @@
   },
   "scripts": {
     "test": "gulp test",
-    "start": "node app/index.js",
-    "postinstall": "cd public && bower install && grunt build"
+    "start": "node app/index.js"
   },
   "homepage": "https://github.com/jodessacs/cosokeyword",
   "dependencies": {
