@@ -35,11 +35,11 @@ exports.register = function (plugin, options, next) {
       } else if (method === 'word_freq') {
         result = word_freq.freq(phrase);
       } else {
-        //result = glossary.extract(phrase);
+        result = glossary.extract(phrase);
         //result = extractor.extract(phrase, {language:"english", return_changed_case:true});
 
         logger.debug('no search method specified, defaulting to word frequency search');
-        result = word_freq.freq(phrase);
+        // result = word_freq.freq(phrase);
       }
       logger.debug('Result: ' + JSON.stringify(result));
 
@@ -58,6 +58,16 @@ exports.register = function (plugin, options, next) {
       reply({ keywords: result });
 
     }
+  });
+
+  plugin.route({
+      method: 'GET',
+      path: '/app/{param*}',
+      handler: {
+          directory: {
+              path: 'public/dist'
+          }
+      }
   });
 
   next();
