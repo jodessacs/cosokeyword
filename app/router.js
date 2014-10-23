@@ -1,6 +1,7 @@
 var express    = require('express');
 var server     = require('./server');
 var logger     = require('./common/logger');
+var config     = require('config');
 
 var glossary   = require('glossary');
 var extractor  = require('keyword-extractor');
@@ -31,7 +32,7 @@ module.exports = function() {
         result = glossary.extract(phrase);
       } else if (method === 'keyword-extractor') {
         result = extractor.extract(phrase, {language:"english", return_changed_case:true});
-      } else if (method === 'gramophone') {
+      } else if (method === 'word_freq') {
         result = word_freq.freq(phrase);
       } else {
         //result = glossary.extract(phrase);
@@ -42,14 +43,16 @@ module.exports = function() {
       }
       logger.debug('Result: ' + JSON.stringify(result));
 
-      var output = req.body.output;
-      if (output === 'say') {
-        say.speak('Victoria', result.concat());
-      } else if (output === 'count') {
-        say.speak('Alex', 'repeated words ' + Object.keys(result));
-      } else {
-        //say.speak('Victoria', result.concat());
-        say.speak('Alex', 'repeated words ' + Object.keys(result));
+      if(config.get('speechEnabled')){
+        var output = req.body.output;
+        if (output === 'say') {
+          say.speak('Victoria', result.concat());
+        } else if (output === 'count') {
+          say.speak('Alex', 'repeated words ' + Object.keys(result));
+        } else {
+          //say.speak('Victoria', result.concat());
+          say.speak('Alex', 'repeated words ' + Object.keys(result));
+        }
       }
 
       res.send({

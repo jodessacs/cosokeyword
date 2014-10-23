@@ -1,7 +1,8 @@
 {
-	"port": 5003,
+  "port": 5003,
   "logging": {
-    "useConsoleLogger": true,
+    "useConsoleLogger": false,
     "useFileLogger": false
-  }
+  },
+  "speechEnabled": false
 }
