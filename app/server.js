@@ -1,12 +1,16 @@
-var express    = require('express');
-var bodyParser = require('body-parser');
-var Router     = require('./router');
+//var express    = require('express');
+var Hapi   = require('hapi');
+var config = require('config');
 
-var app = express();
-var router = Router();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+var server = new Hapi.Server('localhost', process.env.PORT ? process.env.PORT : config.get('port'));
 
-router.addRoutes(app);
+server.pack.register([
+  require('../plugins/root'),
+  require('good')],
+  function (err) {
+  if (err) {
+      console.error('Failed to load plugin:', err);
+  }
+});
 
-module.exports = app;
+module.exports = server;
