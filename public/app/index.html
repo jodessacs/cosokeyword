@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Cosokeyword</title>
+        <title>Coso Keyword</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -12,6 +12,7 @@
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <!-- endbuild -->
     </head>
     <body>
@@ -31,46 +32,39 @@
             </div>
 
             <div class="jumbotron">
-                <h1>'Allo, 'Allo!</h1>
-                <p class="lead">Always a pleasure scaffolding your apps.</p>
-                <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
-            </div>
-
-            <div class="row text-left">
-                <div class="col-md-offset-4">
-                    <h2>Now Try,</h2>
-                    <h4><b>yo backbone:router</b> &lt;router&gt;</h4>
-                    <h4><b>yo backbone:collection</b> &lt;collection&gt;</h4>
-                    <h4><b>yo backbone:model </b> &lt;model&gt;</h4>
-                    <h4><b>yo backbone:view </b> &lt;view&gt;</h4>
+                <h1 id="jumbo-header">'Allo, 'Allo!</h1>
+                <div>
+                  <h3 id="result"></h3>
                 </div>
-            </div>
-
-            <div class="row marketing">
-                <div class="col-lg-6">
-                    <h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-                    <h4>Modernizr</h4>
-                    <p>Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
-
-                </div>
-                <div class="col-lg-6">
-                    <h4>Backbone.js</h4>
-                    <p>Backbone.js gives structure to web applications by providing models, collections, views and connects it all to your existing API over a RESTful JSON interface.</p>
-
-                    <h4>Underscore.js</h4>
-                    <p>Underscore.js is a utility-belt library for JavaScript that provides a lot of the functional programming support</p>
-
-
-                </div>
+                <br />
+                <form action="/" id="keywordForm" method="post">
+                  <input type="text" name="phrase" x-webkit-speech speech required placeholder="Phrase..." size="75" />
+                  <div style="margin:10px">
+                    <input type="radio" name="method" value="glossary" checked> Glossary<br />
+                    <input type="radio" name="method" value="keyword-extractor"> Keywork-Extractor<br />
+                    <input type="radio" name="method" value="word_freq"> Word Frequency<br />
+                  </div>
+                  <input style="margin: 10px;" class="btn btn-lg btn-success" type="submit" value="Analyze" />
+                  <br />
+                </form>
+                <script>
+                $( "#keywordForm" ).submit(function( event ) {
+                  event.preventDefault();
+                  var $form = $( this ),
+                    phrase = $form.find( "input[name='phrase']" ).val(),
+                    method = $form.find( "input[name='method']:checked" ).val(),
+                    url = $form.attr( "action" );
+                  var posting = $.post( url, { phrase: phrase, method: method } );
+                  posting.done(function( data ) {
+                    // $( "#result" ).empty().append( JSON.stringify(Object.keys(data.keywords).join(',')) );
+                    $( "#result" ).empty().append( data.keywords.join(',') );
+                  });
+                });
+                </script>
             </div>
 
             <div class="footer">
-                <p>♥ from the Yeoman team</p>
+                <p>Jodessa and Jake - Team #4</p>
             </div>
 
         </div>
