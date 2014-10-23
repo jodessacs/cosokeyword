@@ -6,7 +6,10 @@ var logger  = require('../app/common/logger');
 
 
 before(function (done) {
-  this.server = app.listen(config.get('port'), done);
+  app.start(function () {
+    logger.debug('Starting server');
+    done();
+  });
 });
 
 describe('An HTTP server', function() {
@@ -84,5 +87,8 @@ describe('An HTTP server', function() {
 });
 
 after(function() {
-  this.server.close();
+  app.stop(function () {
+    logger.debug('Stoppingserver');
+    done();
+  });
 });
