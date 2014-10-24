@@ -1,5 +1,6 @@
 {
 	"port": 5009,
+  "host": "0.0.0.0",
   "logging": {
     "useConsoleLogger": true,
     "useFileLogger": false,
