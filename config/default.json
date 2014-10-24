@@ -2,7 +2,7 @@
 	"port": 5009,
   "logging": {
     "useConsoleLogger": true,
-    "useFileLogger": true,
+    "useFileLogger": false,
     "logfile": "log/cosokeyword.log",
     "fileLogLevel": "debug",
     "consoleLogLevel": "debug",
