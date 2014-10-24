@@ -32,6 +32,7 @@
     "hapi": "^7.1.0",
     "jade": "^1.7.0",
     "keyword-extractor": "0.0.10",
+    "request": "^2.46.0",
     "say": "^0.6.0",
     "winston": "^0.8.1",
     "word-freq": "0.0.8"
