@@ -16,9 +16,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "gulp test",
-    "start": "node app/index.js",
-    "postinstall": "grunt --base public build"
+    "start": "node app/index.js"
   },
   "homepage": "https://github.com/jodessacs/cosokeyword",
   "dependencies": {
