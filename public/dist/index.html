@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Coso Keyword</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/8fe70b6e.main.css">
+        <script src="scripts/vendor/a910906c.modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <h3 class="text-muted">Cosokeyword</h3>
+            </div>
+
+            <div class="jumbotron">
+                <h1 id="jumbo-header">'Allo, 'Allo!</h1>
+                <div>
+                  <h3 id="result"></h3>
+                </div>
+                <br>
+                <form action="/" id="keywordForm" method="post">
+                  <input type="text" name="phrase" x-webkit-speech speech required placeholder="Phrase..." size="75">
+                  <div style="margin:10px">
+                    <input type="radio" name="method" value="glossary" checked="checked"> Glossary<br>
+                    <input type="radio" name="method" value="keyword-extractor"> Keywork-Extractor<br>
+                    <input type="radio" name="method" value="word_freq"> Word Frequency<br>
+                  </div>
+                  <input style="margin: 10px" class="btn btn-lg btn-success" type="submit" value="Analyze">
+                  <br>
+                </form>
+                <script>
+                $( "#keywordForm" ).submit(function( event ) {
+                  event.preventDefault();
+                  var $form = $( this ),
+                    phrase = $form.find( "input[name='phrase']" ).val(),
+                    method = $form.find( "input[name='method']:checked" ).val(),
+                    url = $form.attr( "action" );
+                  var posting = $.post( url, { phrase: phrase, method: method } );
+                  posting.done(function( data ) {
+                    // $( "#result" ).empty().append( JSON.stringify(Object.keys(data.keywords).join(',')) );
+                    $( "#result" ).empty().append( data.keywords.join(',') );
+                  });
+                });
+                </script>
+            </div>
+
+            <div class="footer">
+                <p>Jodessa and Jake - Team #4</p>
+            </div>
+
+        </div>
+
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <script src="scripts/78e1b0d7.vendor.js"></script>
+
+        <script src="scripts/9f1d3b60.plugins.js"></script>
+
+        <script src="scripts/37f053b1.main.js"></script>
+</body>
+</html>
