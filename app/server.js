@@ -5,7 +5,7 @@ var config = require('config');
 var server = new Hapi.Server(config.get('host'), process.env.PORT ? process.env.PORT : config.get('port'));
 
 server.pack.register([
-  require('../plugins/root'),
+  require('../plugins/cosokeyword'),
   require('good')],
   function (err) {
   if (err) {
