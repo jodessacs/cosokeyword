@@ -2,7 +2,7 @@
 var Hapi   = require('hapi');
 var config = require('config');
 
-var server = new Hapi.Server('localhost', process.env.PORT ? process.env.PORT : config.get('port'));
+var server = new Hapi.Server('0.0.0.0', process.env.PORT ? process.env.PORT : config.get('port'));
 
 server.pack.register([
   require('../plugins/root'),
